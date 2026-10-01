@@ -1,4 +1,4 @@
-\# U02.LAB07 · Visión computacional: CNN reproducible con Fashion-MNIST
+﻿\# U02.LAB07 · Visión computacional: CNN reproducible con Fashion-MNIST
 
 
 
@@ -86,7 +86,7 @@ un dominio distinto, se recomendaría: (1) repetir el entrenamiento de la CNN co
 
 validar con imágenes reales del nuevo dominio antes de cualquier despliegue, y (3) revisar 
 
-Específicamente el desempeñó en clases visualmente ambiguas similares a "Shirt", ya que 
+Específicamente el desempeño en clases visualmente ambiguas similares a "Shirt", ya que 
 
 este tipo de confusión entre categorías de silueta parecida probablemente se repita en 
 

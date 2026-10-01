@@ -98,5 +98,5 @@ Antes de cualquier uso más allá de la demostración académica, se recomienda:
 el entrenamiento de la CNN con más épocas (ej. 20-30) para confirmar si supera al baseline 
 denso una vez que converge completamente, (2) revisar manualmente las predicciones de la 
 clase Shirt dado su bajo recall, y (3) validar el modelo con imágenes reales del dominio 
-de destino antes de cualquier despliegue, dado que el desempeñó en Fashion-MNIST no 
+de destino antes de cualquier despliegue, dado que el desempeño en Fashion-MNIST no 
 garantiza generalización a fotografías de prendas en condiciones reales.
