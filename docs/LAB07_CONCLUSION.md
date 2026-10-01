@@ -1,4 +1,4 @@
-\# U02.LAB07 · Vision computacional: CNN reproducible con Fashion-MNIST
+\# U02.LAB07 · Visión computacional: CNN reproducible con Fashion-MNIST
 
 
 
@@ -8,43 +8,43 @@
 
 \*\*Resultado principal:\*\* Se compararon dos arquitecturas de red neuronal (una red densa 
 
-baseline y una CNN) sobre Fashion-MNIST, entrenadas con la misma particion (54,000 train, 
+baseline y una CNN) sobre Fashion-MNIST, entrenadas con la misma partición (54,000 train, 
 
-6,000 validacion, 10,000 prueba) durante 8 epocas con EarlyStopping.
+6,000 validación, 10,000 prueba) durante 8 épocas con EarlyStopping.
 
 
 
 \*\*Evidencia predictiva:\*\* El baseline denso obtuvo un F1-macro de 0.864, superando a la 
 
-CNN (F1-macro 0.789, accuracy 0.793). Sin embargo, la curva de perdida de validacion de 
+CNN (F1-macro 0.789, accuracy 0.793). Sin embargo, la curva de perdida de validación de 
 
-la CNN seguia disminuyendo consistentemente en la ultima epoca (val\_loss: 0.5867, sin 
+la CNN seguía disminuyendo consistentemente en la última época (val\_loss: 0.5867, sin 
 
-estancamiento), lo que sugiere que el modelo convolucional aun no habia convergido y 
+estancamiento), lo que sugiere que el modelo convolucional aún no había convergido y 
 
-probablemente mejoraria con un mayor numero de epocas.
+probablemente mejoraría con un mayor número de épocas.
 
 
 
-\*\*Clase mas dificil:\*\* La clase 6 (Shirt) obtuvo el F1-score mas bajo de la CNN (0.428), 
+\*\*Clase más difícil:\*\* La clase 6 (Shirt) obtuvo el F1-score más bajo de la CNN (0.428), 
 
-con solo 37.4% de recall. La matriz de confusion mostro que la mayoria de sus errores se 
+con solo 37.4% de recall. La matriz de confusión mostró que la mayoría de sus errores sé 
 
 concentraron en otras prendas superiores de silueta similar: T-shirt/top (27.4%), Coat 
 
-(13.0%) y Pullover (12.4%). El analisis visual de 16 errores confirmo que la mayoria 
+(13.0%) y Pullover (12.4%). El análisis visual de 16 errores confirmo que la mayoría 
 
-corresponden a confusiones razonables entre prendas visualmente parecidas en imagenes de 
+corresponden a confusiones razonables entre prendas visualmente parecidas en imágenes de 
 
-baja resolucion (28x28 px, escala de grises), aunque algunos casos (ej. Ankle boot 
+baja resolución (28x28 px, escala de grises), aunque algunos casos (ej. Ankle boot 
 
 clasificado como Sandal) resultaron menos explicables.
 
 
 
-\*\*Costo comparado:\*\* La CNN tiene menos parametros que la red densa (19,466 vs 50,890), 
+\*\*Costo comparado:\*\* La CNN tiene menos parámetros que la red densa (19,466 vs 50,890), 
 
-pero tardo casi 10 veces mas en entrenar (61.93 s vs 6.38 s) y es 2.8 veces mas lenta en 
+pero tardo casi 10 veces más en entrenar (61.93 s vs 6.38 s) y es 2.8 veces más lenta en 
 
 inferencia (0.086 ms/imagen vs 0.031 ms/imagen), todo medido en CPU (Intel Core i7-1255U, 
 
@@ -52,43 +52,43 @@ sin GPU dedicada).
 
 
 
-\*\*¿La mejora justifica el costo?:\*\* No, en esta corrida especifica. El modelo mas costoso 
+\*\*¿La mejora justifica el costo?:\*\* No, en esta corrida específica. El modelo más costoso 
 
-(CNN) obtuvo un desempeno inferior al modelo mas barato (denso), lo cual es un resultado 
+(CNN) obtuvo un desempeñó inferior al modelo más barato (denso), lo cual es un resultado 
 
-util para el analisis de Green AI: no se debe asumir que una arquitectura mas compleja 
+Útil para el análisis de Green AI: no se debe asumir que una arquitectura más compleja 
 
-o costosa produce automaticamente mejores resultados; en este caso, el presupuesto de 
+o costosa produce automáticamente mejores resultados; en este caso, el presupuesto de 
 
-entrenamiento (8 epocas) fue insuficiente para que la CNN alcanzara su potencial, mientras 
+entrenamiento (8 épocas) fue insuficiente para que la CNN alcanzara su potencial, mientras 
 
-que el modelo mas simple ya habia convergido satisfactoriamente en ese mismo presupuesto.
+que el modelo más simple ya había convergido satisfactoriamente en ese mismo presupuesto.
 
 
 
-\*\*Limitacion del benchmark:\*\* Fashion-MNIST es un dataset didactico de baja resolucion, 
+\*\*Limitación del benchmark:\*\* Fashion-MNIST es un dataset didáctico de baja resolución, 
 
-con imagenes centradas, sin fondo, sin variacion de iluminacion ni oclusion. Un buen 
+con imágenes centradas, sin fondo, sin variación de iluminación ni oclusión. Un buen 
 
-resultado aqui no demuestra que el modelo (ni la arquitectura CNN en general) este 
+resultado aquí no demuestra que el modelo (ni la arquitectura CNN en general) este 
 
-preparado para clasificar fotografias reales de productos, imagenes medicas, o cualquier 
+preparado para clasificar fotografías reales de productos, imágenes médicas, o cualquier 
 
 dominio con mayor complejidad visual.
 
 
 
-\*\*Decision antes de usar otro dominio:\*\* Antes de aplicar cualquiera de estos modelos a 
+\*\*Decisión antes de usar otro dominio:\*\* Antes de aplicar cualquiera de estos modelos a 
 
-un dominio distinto, se recomendaria: (1) repetir el entrenamiento de la CNN con mas 
+un dominio distinto, se recomendaría: (1) repetir el entrenamiento de la CNN con más 
 
-epocas para confirmar si supera al baseline una vez que converge completamente, (2) 
+Épocas para confirmar si supera al baseline una vez que converge completamente, (2) 
 
-validar con imagenes reales del nuevo dominio antes de cualquier despliegue, y (3) revisar 
+validar con imágenes reales del nuevo dominio antes de cualquier despliegue, y (3) revisar 
 
-especificamente el desempeno en clases visualmente ambiguas similares a "Shirt", ya que 
+Específicamente el desempeñó en clases visualmente ambiguas similares a "Shirt", ya que 
 
-este tipo de confusion entre categorias de silueta parecida probablemente se repita en 
+este tipo de confusión entre categorías de silueta parecida probablemente se repita en 
 
-otros dominios de clasificacion de imagenes.
+otros dominios de clasificación de imágenes.
 
